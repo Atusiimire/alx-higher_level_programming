@@ -7,8 +7,8 @@ last_digit = ((number * -1) % 10) * -1
 else:
 last_digit = number % 10
 if last_digit > 5:
-print('Last digit of', number, 'is', last_digit, 'and is greater than 5')
+    print('Last digit of', number, 'is', last_digit, 'and is greater than 5')
 elif last_digit == 0:
-print('Last digit of', number, 'is', last_digit, 'and is 0')
+    print('Last digit of', number, 'is', last_digit, 'and is 0')
 elif last_digit < 6 and last_digit != 0:
-print('Last digit of', number, 'is', last_digit, zero)
+    print('Last digit of', number, 'is', last_digit, zero)
