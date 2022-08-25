@@ -1,11 +1,15 @@
 #!/usr/bin/python3
+import sys
+def main():
+    argc = len(sys.argv) - 1
+    if argc == 0:
+        print("0 arguments.")
+    elif argc == 1:
+        print("1 argument:")
+        print("1: {}".format(sys.argv[1]))
+    else:
+        print("{:d} arguments:".format(argc))
+        for i in range(1, argc + 1):
+            print("{}: {}".format(i, sys.argv[i]))
 if __name__ == "__main__":
-    from sys import argv
-    userin = argv[1:]
-    size = len(userin)
-    print("{:d} {:s}{:s}".
-        format(size,
-            "arguments" if (size) is not 1 else "argument",
-            "." if (size) is 0 else ":"))
-    for idx, arg in enumerate(userin):
-        print("{:d}: {:s}".format(idx + 1, arg))
+    main()
