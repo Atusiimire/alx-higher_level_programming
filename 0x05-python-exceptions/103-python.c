@@ -20,7 +20,7 @@ fflush(stdout);
 printf("[*] Python list info\n");
 if (strcmp(p->ob_type->tp_name, "list") != 0)
 {
-rintf("  [ERROR] Invalid List Object\n");
+printf("  [ERROR] Invalid List Object\n");
 return;
 }
 printf("[*] Size of the Python List = %ld\n", size);
