@@ -11,7 +11,7 @@ and has static method that returns bigger rectangle out of two given
 class Rectangle():
     """
     Defines class rectangle with private attribute width and height
-    
+
     Args:
         width (int): width
         height (int): height
@@ -29,7 +29,7 @@ class Rectangle():
         area(self)
         perimeter(self)
         __str__(self)
-        e_repr__(self)
+        __repr__(self)
         __del__(self)
         bigger_or_equal(rect_1, rect_2)
     """
