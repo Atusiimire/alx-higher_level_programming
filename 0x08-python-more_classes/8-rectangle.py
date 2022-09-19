@@ -1,16 +1,17 @@
 #!/usr/bin/python3
 """
-Module 7-rectangle
+Module 8-rectangle
 Contains class Rectangle with private attribute width and height,
 public area and perimeter methods, allows printing using any given symbol,
-deletes, and has public attribute to keep track of number of instances
+deletes, has public attribute to keep track of number of instances,
+and has static method that returns bigger rectangle out of two given
 """
 
 
 class Rectangle():
     """
     Defines class rectangle with private attribute width and height
-
+    
     Args:
         width (int): width
         height (int): height
@@ -28,8 +29,9 @@ class Rectangle():
         area(self)
         perimeter(self)
         __str__(self)
-        __repr__(self)
+        e_repr__(self)
         __del__(self)
+        bigger_or_equal(rect_1, rect_2)
     """
     number_of_instances = 0
     print_symbol = "#"
@@ -94,3 +96,13 @@ class Rectangle():
     def __repr__(self):
         """ String representation to recreate new instance """
         return "Rectangle({:d}, {:d})".format(self.width, self.height)
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_1.area() >= rect_2.area():
+            return rect_1
+        return rect_2
