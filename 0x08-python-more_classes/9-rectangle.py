@@ -92,7 +92,7 @@ class Rectangle():
         if self.__width == 0 or self.__height == 0:
             return ""
         pic = "\n".join([str(self.print_symbol) * self.__width
-            for rows in range(self.__height)])
+                         for rows in range(self.__height)])
         return pic
 
     def __repr__(self):
@@ -105,9 +105,9 @@ class Rectangle():
         if not isinstance(rect_1, Rectangle) or \
                 not isinstance(rect_2, Rectangle):
             raise TypeError("{} must be an instance of Rectangle".
-                    format("rect_1" if not
-                        isinstance(rect_1, Rectangle)
-                        else "rect_2"))
+                            format("rect_1" if not
+                                   isinstance(rect_1, Rectangle)
+                                   else "rect_2"))
         if rect_2.area() > rect_1.area():
             return rect_2
         return rect_1
