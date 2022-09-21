@@ -88,9 +88,14 @@ class Rectangle():
         if self.__width == 0 or self.__height == 0:
             return ""
         pic = "\n".join([str(self.print_symbol) * self.__width
-            for rows in range(self.__height)])
+                         for rows in range(self.__height)])
         return pic
 
     def __repr__(self):
         """ String representation to recreate new instance """
         return "Rectangle({:d}, {:d})".format(self.width, self.height)
+
+    '''del method definition'''
+    def __del__(self):
+        print("Bye rectangle...")
+        type(self).number_of_instances -= 1
