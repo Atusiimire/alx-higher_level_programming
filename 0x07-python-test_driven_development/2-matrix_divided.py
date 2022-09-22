@@ -10,7 +10,7 @@ def matrix_divided(matrix, div):
     c = []
     row = len(matrix)
     col = len(matrix[0])
-    i = 0
+    k = 0
 
     if type(div) not in [int, float]:
         raise TypeError("div must be a number")
@@ -21,14 +21,14 @@ def matrix_divided(matrix, div):
         raise TypeError("matrix must be a matrix(list of lists)
                         of integers/floats")
     if len(matrix) > 1:
-        if type(matrix[i]) not in [list] or type(matrix[i + 1]) not in [list]:
+        if type(matrix[k]) not in [list] or type(matrix[i + 1]) not in [list]:
             raise TypeError("matrix must be a matrix(list of lists)
                             of integers/floats")
 
-        if len(matrix[i]) != len(matrix[i + 1]):
+        if len(matrix[k]) != len(matrix[k + 1]):
             raise TypeError("Each row of the matrix must have the same size")
     else:
-        if type(matrix[i]) not in [list]:
+        if type(matrix[k]) not in [list]:
             raise TypeError("matrix must be a matrix(list of lists)
                             or integers/floats")
 
@@ -39,8 +39,8 @@ def matrix_divided(matrix, div):
                 raise TypeError("matrix must be a matrix(list of lists)
                                 of integers/floats")
 
-            k = matrix[a][b] / div
-            d.append(round(k, 2))
+            h = matrix[a][b] / div
+            d.append(round(h, 2))
             b = b + 1
         a = a + 1
         c.append(d)
