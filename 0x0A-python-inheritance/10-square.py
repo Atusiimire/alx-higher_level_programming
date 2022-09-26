@@ -1,17 +1,19 @@
 #!/usr/bin/python3
-'''module for square class'''
-
+"""
+Contains the class BaseGeometry and subclass Rectangle
+"""
 
 Rectangle = __import__('9-rectangle').Rectangle
-    '''rectangle class import'''
+
 
 class Square(Rectangle):
-    '''class initialization'''
+    """A representation of a square"""
     def __init__(self, size):
+        """instantiation of the square"""
+        self.integer_validator("size", size)
         self.__size = size
-        self.integer_validator("size", self.__size)
         super().__init__(size, size)
 
-    '''area implementation'''
     def area(self):
+        """"returns the area of the square"""
         return self.__size ** 2
