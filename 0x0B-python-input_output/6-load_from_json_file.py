@@ -1,11 +1,17 @@
 #!/usr/bin/python3
-"""
-Contains the "from_json_string" function
-"""
+'''defining load_from_json_file module'''
 
 import json
+'''importing json'''
 
 
-def from_json_string(my_str):
-    """returns an object represented by a JSON string"""
-    return json.loads(my_str)
+def load_from_json_file(filename):
+    '''
+    load_from_json_file: this is a function that creates an  obj from jsonfile
+    Args:
+        filename: this is the file to be used to create obj
+        Return: Returns the new object file
+    '''
+    with open(filename) as f:
+        data = json.load(f)
+        return 

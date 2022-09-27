@@ -1,11 +1,15 @@
 #!/usr/bin/python3
-"""
-Contains the "to_json_string" fundtion
-"""
+'''Module definiton sav save_to_json_file'''
 
 import json
+'''importing json to the module'''
 
 
-def to_json_string(my_obj):
-    """returns the JSON representation of an object (string)"""
-    return json.dumps(my_obj)
+def save_to_json_file(my_obj, filename):
+    '''save_to_json_file: a function that saves an obj to file using json
+    Args:
+        My_obj: is the object to be added to file
+        filename: is the name of the file
+    '''
+    with open(filename, 'w') as f:
+        return json.dump(my_obj, f)
