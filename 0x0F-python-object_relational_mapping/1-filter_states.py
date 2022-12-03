@@ -1,23 +1,27 @@
 #!/usr/bin/python3
 """
-This module runs a script to fetch all states table
-in the database provided where name matches a provided value
-This script is succeptible to SQL injection attack
+return states starting with 'N'
+parameters given to script: username, password, database
 """
+
 import MySQLdb
 from sys import argv
 
 
 if __name__ == "__main__":
-    if len(argv) == 5:
-        db = MySQLdb.connect(host='localhost', user=argv[1], passwd=argv[2],
-                             db=argv[3], charset='utf8')
-        cur = db.cursor()
-        cur.execute("SELECT * FROM states WHERE name = '{:s}' ORDER BY id"
-                    .format(argv[4]))
-        states = cur.fetchall()
-        for state in states:
-            if state[1] == argv[4]:
-                print(state)
-        cur.close()
-        db.close()
+
+    # connect to database
+    db = MySQLdb.connect(host="localhost",
+                         port=3306,
+                         user=argv[1],
+                         passwd=argv[2],
+                         db=argv[3])
+
+    # create cursor to exec queries using SQL; filter names starting with 'N'
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    for row in cursor.fetchall():
+        if row[1][0] == 'N':
+            print(row)
+    cursor.close()
+    db.close()
