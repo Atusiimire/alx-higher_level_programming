@@ -1,31 +1,28 @@
 #!/usr/bin/python3
-"""
-Function that finds a peak in a list of unsorted integers
-"""
+"""Find the peak in an array"""
+
+
+def FindAPeak(arr, i, j):
+    """Binary Search"""
+    mid = int((i + j) / 2)
+    # if mid element is peak
+    if (mid == len(arr)-1 or arr[mid] >= arr[mid+1]) and\
+       (mid == 0 or arr[mid] >= arr[mid-1]):
+        return arr[mid]
+    # when your peak exists in the right half
+    if arr[mid] < arr[mid+1] and mid+1 < len(arr):
+        return FindAPeak(arr, mid+1, j)
+    # when your peak exists in the left half
+    else:
+        return FindAPeak(arr, i, mid-1)
 
 
 def find_peak(list_of_integers):
-    """
-    finds num that's greater than both left and right
-    """
-    if len(list_of_integers) == 0:
+    """Pass to the list"""
+    y = list_of_integers
+
+    if len(y) == 0:
         return None
 
-    l = list_of_integers
-    beg = 0
-    end = len(l)-1
-
-    if l[beg] > l[beg+1]:
-        return l[beg]
-    if l[end] > l[end-1]:
-        return l[end]
-
-    mid = (beg+end)//2
-    if l[mid-1] < l[mid] and l[mid+1] < l[mid]:
-        return l[mid]
-    if l[mid] < l[mid-1]:
-        return find_peak(l[beg:mid+1])
-    elif l[mid] < l[mid+1]:
-        return find_peak(l[mid:end+1])
-    else:
-        return l[beg]
+    peak = FindAPeak(y, 0, len(y) - 1)
+    return peak
