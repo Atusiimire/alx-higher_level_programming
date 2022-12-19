@@ -1,11 +1,15 @@
 #!/usr/bin/python3
-"""my body header"""
-if __name__ == "__main__":
-    import urllib.request
+''' a script that fetches alx url '''
+import urllib.request
 
-    with urllib.request.urlopen('https://alx-intranet.hbtn.io/status') as response:
-        print("Body response:")
-        ty = response.read()
-        print("\t- type: {}".format(type(response.read())))
-        print("\t- content: {}".format(ty))
-        print("\t- utf8 content: {}".format(ty.decode('utf-8')))
+
+if __name__ == "__main__":
+    ''' module to fetch url '''
+    url = 'http://0.0.0.0:5050/status'
+    req = urllib.request.Request(url)
+    with urllib.request.urlopen(req) as response:
+        the_page = response.read()
+        print('Body response:')
+        print("\t- type: {}".format(type(the_page)))
+        print("\t- content: {}".format(the_page))
+        print("\t- utf8 content: {}".format(the_page.decode("utf-8")))
