@@ -1,25 +1,17 @@
 #!/usr/bin/node
 
-const url = process.argv[2];
 const request = require('request');
-
-request(url, function (err, response, body) {
-  if (err) {
-    console.log(err);
-  } else if (response.statusCode === 200) {
-    const dic = {};
-    const tasks = JSON.parse(body);
-    for (const i in tasks) {
-      if (tasks[i].completed) {
-        if (dic[tasks[i].userId] === undefined) {
-	  dic[tasks[i].userId] = 1;
-        } else {
-	  dic[tasks[i].userId]++;
-        }
+const url = process.argv[2];
+const newDict = {};
+request.get(url, function (err, response, body) {
+  if (err == null) {
+    const todos = JSON.parse(body);
+    for (let i = 0; i < todos.length; i++) {
+      if (todos[i].completed === true) {
+        if (newDict[todos[i].userId] === undefined) { newDict[todos[i].userId] = 0; }
+        newDict[todos[i].userId] += 1;
       }
     }
-    console.log(dic);
-  } else {
-    console.log('Error code: ' + response.statusCode);
+    console.log(newDict);
   }
 });
