@@ -10,7 +10,6 @@ request.get(url, function (err, response, body) {
   }
 });
 
-
 function Characters (i, url, charList, limit) {
   if (i === limit) { return; }
   request.get(url, function (err, respinse, body) {
